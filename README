@@ -1,0 +1,20 @@
+Run script/governance_engine_server.pl to test the application.
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+	perl Makefile.PL
+	make
+	make test
+	make install
+
+REGENERATING SCHEMA
+
+Use the following command to regenerate schema:
+
+    dbicdump -o dump_directory=./lib \
+        -o components='["InflateColumn::DateTime","PassphraseColumn","Validation"]' \
+        -o skip_load_external=1 \
+        Governance::Schema \
+        dbi:mysql:governance $USER $PASS
