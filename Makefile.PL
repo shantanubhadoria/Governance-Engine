@@ -18,12 +18,22 @@ requires 'namespace::autoclean';
 requires 'Config::General'; # This should reflect the config file format you've chosen
                             # See Catalyst::Plugin::ConfigLoader for supported formats
 
+requires 'Catalyst::Action::RenderView'                   => '0.16';
+requires 'Catalyst::Authentication::Store::DBIx::Class'   => '0.1505';
+requires 'Catalyst::Controller::HTML::FormFu'             => '1.00';
+requires 'Catalyst::Model::DBIC::Schema'                  => '0.62';
+requires 'Catalyst::Plugin::Authorization::Roles'         => '0.09';
+requires 'Catalyst::Plugin::Session::State::Cookie'       => '0.17';
+requires 'Catalyst::Plugin::Session::Store::FastMmap'     => '0.16';
+requires 'Catalyst::Plugin::StatusMessage'                => '1.002000';
+requires 'Catalyst::View::JSON'                           => '0.33';
 requires 'DBIx::Class'                                    => '0.08270';
 requires 'DBIx::Class::InflateColumn::Authen::Passphrase' => '0.01';
-requires 'DBIx::Class::Validation'                        => '0.02005';
 requires 'DBIx::Class::PassphraseColumn'                  => '0.02';
+requires 'DBIx::Class::Validation'                        => '0.02005';
 requires 'Log::Log4perl::Catalyst'                        => '1.42';
-requires 'Catalyst::Helper::Model::DBIC::Schema'          => '0.62';
+requires 'MooseX::Singleton'                              => '0.29';
+requires 'YAML::XS'                                       => '0.41';
 
 test_requires 'Test::More' => '0.88';
 catalyst;

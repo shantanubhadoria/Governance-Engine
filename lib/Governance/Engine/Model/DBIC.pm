@@ -4,7 +4,7 @@ use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
-    schema_class => 'create=static',
+    schema_class => 'Governance::Schema',
     
     connect_info => {
         dsn      => Governance::Config->get('db')->{dsn},

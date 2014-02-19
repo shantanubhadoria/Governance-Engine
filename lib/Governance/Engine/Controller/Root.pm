@@ -20,17 +20,29 @@ Governance::Engine::Controller::Root - Root Controller for Governance::Engine
 
 =head1 METHODS
 
+=head2 base
+
+=cut
+
+sub base :Chained('/') :PathPart('') :CaptureArgs(0){
+    my ( $self, $c ) = @_;
+    $c->stash(
+        current_view => 'JSON',
+        json => { 
+            name => $c->config->{name},
+        },
+    );
+}
+
 =head2 index
 
 The root page (/)
 
 =cut
 
-sub index :Path :Args(0) {
+sub index :Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
-
-    # Hello World
-    $c->response->body( $c->welcome_message );
+    $c->response->body( 'Page not ' );
 }
 
 =head2 default
@@ -39,7 +51,7 @@ Standard 404 error page
 
 =cut
 
-sub default :Path {
+sub default :Chained('base') :Args(1) {
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
     $c->response->status(404);

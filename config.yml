@@ -1,3 +1,4 @@
+log_conf_file: /etc/governance/log4perl.conf
 db:                                                                                                                                                                   
   dsn: dbi:mysql:db_name:localhost:3306
   user: username
