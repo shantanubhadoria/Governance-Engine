@@ -156,6 +156,7 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07010 @ 2014-02-19 13:28:15
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:M+Cfa58zjY527bnGaOSiIg
 
+__PACKAGE__->resultset_class( 'DBIx::Class::ResultSet::HashRef' );
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;

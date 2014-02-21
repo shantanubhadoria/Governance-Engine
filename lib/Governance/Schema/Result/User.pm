@@ -63,6 +63,12 @@ __PACKAGE__->table("users");
   is_nullable: 0
   size: 45
 
+=head2 mobile_number
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 45
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -84,6 +90,8 @@ __PACKAGE__->add_columns(
   "middle_name",
   { data_type => "varchar", is_nullable => 1, size => 45 },
   "last_name",
+  { data_type => "varchar", is_nullable => 0, size => 45 },
+  "mobile_number",
   { data_type => "varchar", is_nullable => 0, size => 45 },
 );
 __PACKAGE__->set_primary_key("id");
@@ -123,8 +131,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07010 @ 2014-02-19 13:28:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uYOkAdJNapTK0Sb7W4poNg
+# Created by DBIx::Class::Schema::Loader v0.07010 @ 2014-02-19 22:16:59
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0pKM1Ph1pF8SZ5YmnmNzNg
 
 __PACKAGE__->many_to_many(
   "roles" => 'user_role_maps',

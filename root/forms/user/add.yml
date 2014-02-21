@@ -1,0 +1,81 @@
+# root/forms/user/add.yml
+---
+  indicator: submit
+  elements:
+    -
+        type: Text
+        name: username
+        label: Username
+        attributes:
+          title: Enter Username
+        constraints:
+            - Required
+            - 
+                type: Length
+                min: 4 
+                max: 20
+            -
+                type: DBIC::Unique
+                model: DBIC 
+                resultset: User 
+                column: username
+                message: Username taken
+    -
+        type: Text
+        name: email 
+        label: Email 
+        attributes:
+          title: Enter email 
+        constraints:
+            - Required
+            - Email
+            -
+                type: DBIC::Unique
+                model: DBIC 
+                resultset: User
+                column: email 
+                message: Email already in use
+    -
+        type: Password 
+        name: password 
+        label: Password
+        attributes:
+          title: Enter password
+        constraints:
+            - Required
+    -
+        type: Text
+        name: first_name
+        label: First Name
+        attributes:
+          title: First Name
+        constraints:
+            - Required
+    -
+        type: Text
+        name: middle_name
+        label: Middle Name
+        attributes:
+            title: Middle Name
+    -
+        type: Text
+        name: last_name
+        label: Last Name
+        attributes:
+            title: Last Name
+        constraints:
+            - Required
+    -
+        type: Text
+        name: mobile_number
+        label: Mobile
+        attributes: 
+            title: Mobile Number
+        constraints:
+            - Required
+    - 
+        type: Submit
+        name: submit
+        value: Register
+        attrs:
+          handler: submitForm

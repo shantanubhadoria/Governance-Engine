@@ -31,6 +31,7 @@ requires 'DBIx::Class'                                    => '0.08270';
 requires 'DBIx::Class::InflateColumn::Authen::Passphrase' => '0.01';
 requires 'DBIx::Class::PassphraseColumn'                  => '0.02';
 requires 'DBIx::Class::Validation'                        => '0.02005';
+requires 'HTML::FormFu::Constraint::DBIC::Unique'         => '1.02';
 requires 'Log::Log4perl::Catalyst'                        => '1.42';
 requires 'MooseX::Singleton'                              => '0.29';
 requires 'YAML::XS'                                       => '0.41';

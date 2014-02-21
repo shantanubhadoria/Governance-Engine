@@ -29,7 +29,7 @@ sub base :Chained('/') :PathPart('') :CaptureArgs(0){
     $c->stash(
         current_view => 'JSON',
         json => { 
-            name => $c->config->{name},
+#            name => $c->config->{name},
         },
     );
 }
@@ -42,7 +42,6 @@ The root page (/)
 
 sub index :Chained('base') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
-    $c->response->body( 'Page not ' );
 }
 
 =head2 default

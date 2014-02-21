@@ -1,0 +1,49 @@
+# root/forms/issue/add.yml
+---
+  indicator: submit
+  elements:
+    -
+        type: Select
+        name: issue_type_id
+        model_config:
+          model: DBIC
+          resultset: IssueType
+          label_column: name
+          id_column: id
+    -
+        type: Text
+        name: subject 
+        label: Subject
+        attributes:
+          title: Enter Subject 
+        constraints:
+            - Required
+            - 
+                type: Length
+                min: 20 
+                max: 250
+    -
+        type: Textarea
+        name: description 
+        label: Description
+        attributes:
+          title: Enter Description
+        constraints:
+            - Required
+            - 
+                type: Length
+                min: 200 
+    -
+        type: Select
+        name: issue_status_id
+        model_config:
+          model: DBIC
+          resultset: IssueStatus
+          label_column: name
+          id_column: id
+    - 
+        type: Submit
+        name: submit
+        value: Create 
+        attrs:
+          handler: submitForm

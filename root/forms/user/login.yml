@@ -1,0 +1,30 @@
+# root/forms/user/login.yml
+---
+  indicator: username
+  elements:
+    -
+        type: Text
+        name: username
+        label: Username
+        attributes:
+          title: Enter Username
+        constraints:
+            - Required
+            - 
+                type: Length
+                min: 4 
+                max: 20
+    -
+        type: Password 
+        name: password 
+        label: Password
+        attributes:
+          title: Enter password
+        constraints:
+            - Required
+    -
+        type: Submit
+        name: submit
+        value: Login 
+        attrs:
+          handler: submitForm
