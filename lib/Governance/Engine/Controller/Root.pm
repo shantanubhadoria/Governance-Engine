@@ -26,6 +26,7 @@ Governance::Engine::Controller::Root - Root Controller for Governance::Engine
 
 sub base :Chained('/') :PathPart('') :CaptureArgs(0){
     my ( $self, $c ) = @_;
+    $c->response->headers->header('Access-Control-Allow-Origin' => '*');
     $c->stash(
         current_view => 'JSON',
         json => { 

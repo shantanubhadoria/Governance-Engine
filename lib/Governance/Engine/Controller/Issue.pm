@@ -1,6 +1,7 @@
 package Governance::Engine::Controller::Issue;
 use Moose;
 use namespace::autoclean;
+use JSON;
 
 BEGIN {extends 'Catalyst::Controller'; }
 
@@ -61,7 +62,7 @@ sub add :Chained('base') :PathPart('add') :Args(0) :FormConfig {
         $form->model->update($user);
         $c->stash(
             json => {
-                success        => 1,
+                success        => JSON::true(),
                 status_message => 'Issue Add',
             },
         );
@@ -69,7 +70,7 @@ sub add :Chained('base') :PathPart('add') :Args(0) :FormConfig {
     } else {
         $c->stash(
             json => {
-                success        => 0,
+                success        => JSON::false(),
                 status_message => 'Issue Add Failed',
             },
         );

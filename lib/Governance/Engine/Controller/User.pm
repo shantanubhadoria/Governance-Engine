@@ -1,6 +1,7 @@
 package Governance::Engine::Controller::User;
 use Moose;
 use namespace::autoclean;
+use JSON;
 
 BEGIN { extends 'Catalyst::Controller::HTML::FormFu'; }
 
@@ -49,7 +50,7 @@ sub add :Chained('base') :PathPart('add') :Args(0) :FormConfig {
         $form->model->update($user);
         $c->stash(
             json => {
-                success        => 1,
+                success        => JSON::true(),
                 status_message => 'Registration Successful',
             },
         );
@@ -57,7 +58,7 @@ sub add :Chained('base') :PathPart('add') :Args(0) :FormConfig {
     } else {
         $c->stash(
             json => {
-                success        => 0,
+                success        => JSON::false(),
                 status_message => 'Registration Failed',
             },
         );
@@ -113,7 +114,7 @@ sub login :Chained('base') :PathPart('login') :Args(0) :FormConfig {
             $c->log->debug("*** Authenticated User ***");
             $c->stash(
                 json => {
-                    success        => 1,
+                    success        => JSON::true(),
                     status_message => 'Authentication Successful',
                 },
             );
@@ -122,7 +123,7 @@ sub login :Chained('base') :PathPart('login') :Args(0) :FormConfig {
             $c->log->debug("*** Authentication Failed ***");
             $c->stash(
                 json => {
-                    success        => 0,
+                    success        => JSON::false(),
                     status_message => 'Authentication Failed',
                 },
             );
@@ -131,7 +132,7 @@ sub login :Chained('base') :PathPart('login') :Args(0) :FormConfig {
     } else {
         $c->stash(
             json => {
-                success        => 0,
+                success        => JSON::false(),
                 status_message => 'Invalid Parameters',
             },
         );
@@ -147,7 +148,7 @@ sub logout :Chained('base') :PathPart('logout') :Args(0) {
     $c->logout();
     $c->stash(
         json => {
-            success        => 1,
+            success        => JSON::true(),
             status_message => 'Logged Out',
         },
     );
