@@ -40,7 +40,9 @@ sub list :Chained('base') :PathPart('list') :Args(0) {
                 "me.id",
                 "me.subject",
                 "me.description",
-                { date => "me.created_time"},
+                {"date_format" => "me.created_time,'%p'", -as => "created_am_pm"},
+                {"date_format" => "me.created_time,'%h:%i'", -as => "created_time"},
+                {"date_format" => "me.created_time,'%M %Y'" , -as => "created_date"}, 
 
                 "issue_type.name",
 
