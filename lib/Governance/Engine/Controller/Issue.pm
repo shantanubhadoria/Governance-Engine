@@ -36,11 +36,30 @@ sub list :Chained('base') :PathPart('list') :Args(0) {
     my $issues = $c->model('DBIC::Issue')->search(
         undef,
         {
-                order_by => {
-                    -desc => qw/id/,
-                },
-                page => $params->{page} || 1,
-                rows => 10,
+            select => [
+                "me.id",
+                "me.subject",
+                "me.description",
+                { date => "me.created_time"},
+
+                "issue_type.name",
+
+                "issue_status.name",
+
+                "author_user.first_name",
+                "author_user.middle_name",
+                "author_user.last_name",
+            ],
+            join => [
+                "issue_status",
+                "author_user",
+                "issue_type",
+            ],
+            order_by => {
+                -desc => qw/me.id/,
+            },
+            page => $params->{page} || 1,
+            rows => 10,
         },
     )->hashref_array;
     $c->stash->{json}->{issues} = $issues;
